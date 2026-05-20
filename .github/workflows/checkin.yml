@@ -1,0 +1,30 @@
+name: 机场自动签到
+
+on:
+  schedule:
+    - cron: '0 0 * * *'   # 每天北京时间 8 点
+  workflow_dispatch:
+
+jobs:
+  checkin:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Dependencies
+        run: npm install axios
+
+      - name: Run Checkin
+        run: node checkin.js
+        env:
+          DOMAIN: ${{ secrets.DOMAIN }}
+          USER: ${{ secrets.USER }}
+          PASS: ${{ secrets.PASS }}
+          PUSHPLUS_TOKEN: ${{ secrets.PUSHPLUS_TOKEN }}

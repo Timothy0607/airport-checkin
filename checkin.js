@@ -28,8 +28,8 @@ async function pushplus(content) {
     method: "POST",
     data: {
       token: PUSHPLUS_TOKEN,
-      title: "机场签到通知",
-      content,
+      title: "签到通知",  // ✅ 修改标题
+      content: `账号：${USER}\n\n${content}`,  // ✅ 内容包含账号
       template: "txt",
     },
   });

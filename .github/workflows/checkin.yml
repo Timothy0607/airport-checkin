@@ -2,8 +2,8 @@ name: 机场自动签到
 
 on:
   schedule:
-    - cron: '20 06 * * *'   # 账号1：北京时间 14:20
-    - cron: '30 06 * * *'  # 账号2：北京时间 14:30
+    - cron: '40 06 * * *'   # 账号1：北京时间 14:40
+    - cron: '45 06 * * *'  # 账号2：北京时间 14:45
   workflow_dispatch:
     inputs:
       account:

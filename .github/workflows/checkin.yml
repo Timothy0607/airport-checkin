@@ -3,8 +3,8 @@ name: 机场自动签到
 on:
   # 定时任务（使用上海时区）
   schedule:
-    - cron: '10 01 * * *'   # 上海时区 9:10 (UTC 01:10)
-    - cron: '15 01 * * *'   # 上海时区 9:15 (UTC 01:15)
+    - cron: '10 22 * * *'   # 上海时区 6:10 (UTC 22:10)
+    - cron: '15 22 * * *'   # 上海时区 6:15 (UTC 22:15)
   # 保留手动触发功能
   workflow_dispatch:
 
@@ -12,8 +12,8 @@ jobs:
   # 账号1 任务
   account1:
     runs-on: ubuntu-latest
-    # 只有到了 9:10 这个时间点，才会执行这个任务
-    if: github.event.schedule == '10 01 * * *'
+    # 只有到了 6:10 这个时间点，才会执行这个任务
+    if: github.event.schedule == '10 22 * * *'
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -30,8 +30,8 @@ jobs:
   # 账号2 任务
   account2:
     runs-on: ubuntu-latest
-    # 只有到了 9:15 这个时间点，才会执行这个任务
-    if: github.event.schedule == '15 01 * * *'
+    # 只有到了 6:15 这个时间点，才会执行这个任务
+    if: github.event.schedule == '15 22 * * *'
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
